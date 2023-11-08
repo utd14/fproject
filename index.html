@@ -35,7 +35,7 @@
           </ul>
     
         <div class="col-md-3 text-end">
-            <button type="button" class="btn me-2 text-white"><a href="profile.html" class="nav-link link-body-emphasis px-3 text-white">Login</a></button>
+            <button type="button" class="btn me-2 text-white"><a href="profile.html" class="nav-link link-body-emphasis px-0 text-white">Login</a></button>
             <button type="button" class="btn btn-light" style="margin-right: 20px;">Sign-up</button>
           <label class="switch" style="position:absolute;">
             <input type="checkbox" checked>
@@ -47,7 +47,7 @@
       <section class="py-2 text-center container">
         <div class="row py-lg-0">
           <div class="col-lg-6 col-md-8 mx-auto">
-              <h1 class="fw-light">MEDIABASE</h1>
+              <h1 class="fw-light" id="MAINTEXT">MEDIABASE</h1>
             <p class="lead text-body-secondary">a community oriented comprehensive database of various forms of media, such as video games, cartoons, anime, TV shows, and more.</p>
             <p>
               <a href="#" class="btn btn-primary my-2">Create your acount</a>
@@ -59,37 +59,53 @@
         </div>
       </section>
 
+      <script>
+        const textcolour = document.getElementById("MAINTEXT");
+        textcolour.addEventListener(
+          "mouseenter",
+          (event) => {
+            event.target.style.color = "#213C70";
+
+            setTimeout(() => {
+            event.target.style.color = "";
+            }, 600);
+        },
+        false,
+        );
+      </script>
+
       <div class="slideshow-container">
-        <!-- SLIDESHOW -->
-        <div class="mySlides fade">
+        
+        <div class="mySlides">
           <div class="numbertext">1 / 4</div>
           <img src="Images/slideshow1.png" style="width:100%">
-          <div class="text">Rate videogames</div>
+          <div class="text" style="font-size: 2vw;">Discuss videogames</div>
         </div>
       
-        <div class="mySlides fade">
+        <div class="mySlides">
           <div class="numbertext">2 / 4</div>
           <img src="Images/slideshow2.png" style="width:100%">
-          <div class="text">Rate cartoons</div>
+          <div class="text" style="font-size: 2vw;">Discuss cartoons</div>
         </div>
       
-        <div class="mySlides fade">
+        <div class="mySlides">
           <div class="numbertext">3 / 4</div>
           <img src="Images/slideshow3.png" style="width:100%">
-          <div class="text">Rate TV shows</div>
+          <div class="text" style="font-size: 2vw;">Discuss TV shows</div>
         </div>
-        <div class="mySlides fade">
+        
+        <div class="mySlides">
           <div class="numbertext">4 / 4</div>
           <img src="Images/slideshow4.png" style="width:100%">
-          <div class="text">Rate anime</div>
+          <div class="text" style="font-size: 2vw;">Discuss anime</div>
         </div>
       
-        <!-- Next and previous buttons -->
+        
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
       </div>
       <br>
-      <!-- The dots/circles -->
+      
       <div style="text-align:center">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
@@ -213,10 +229,12 @@
           </div>
         </div>
 
+        <br>
+
         <footer class="p-4 mb-0 d-flex flex-wrap justify-content-between align-items-center py-2 my-4">
-          <div class="col-md-4 d-flex align-items-center">
-            <a href="#" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                <svg width="43" height="auto" viewBox="0 0 73 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <div id="image-container" class="col-md-4 d-flex align-items-center">
+            <a class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                <svg id="main-image" width="43" height="auto" viewBox="0 0 73 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M45.4591 16.6231L45.1943 16.3754V8.40576L57.5272 16.6231H45.4591Z" fill="white" stroke="white" stroke-width="9"/>
                     <path d="M45.4847 28.4003L57.8354 28.2694L45.1943 36.6563V28.6711L45.4847 28.4003Z" fill="#D2D2D2" stroke="#D2D2D2" stroke-width="9"/>
                     <path d="M17.3955 45.042V33.4332L0 0V12.5375L17.3955 45.042Z" fill="white"/>
@@ -227,6 +245,41 @@
             </a>
             <span class="mb-3 mb-md-0 text-white">© 2023 Dana Uteusheva, IT-2202</span>
           </div>
+
+          <script>
+            const imageContainer = document.getElementById("image-container");
+            const mainImage = document.getElementById("main-image");
+            let isStickerVisible = false;
+        
+            imageContainer.addEventListener("click", function(){
+              if (isStickerVisible) {
+                mainImage.style.display = "block";
+                isStickerVisible = false;
+              } else {
+                mainImage.style.display = "none";
+        
+                if (sticker) {
+                  sticker.style.display = "block";
+                } else {
+                  sticker = document.createElement("img");
+                  sticker.id = "sticker"; 
+                  sticker.src = "Images/sticker_1_png.png";
+                  sticker.className = "sticker";
+                  sticker.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    mainImage.style.display = "block";
+                    sticker.style.display = "none";
+                    isStickerVisible = false;
+                  });
+                  imageContainer.appendChild(sticker);
+                }
+        
+                isStickerVisible = true;
+              }
+            });
+        
+            let sticker = null;
+          </script>
       
           <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Contact me</a></li>
