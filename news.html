@@ -122,9 +122,9 @@
       </div>
 
       <footer class="p-4 mb-0 d-flex flex-wrap justify-content-between align-items-center py-2 my-4">
-        <div class="col-md-4 d-flex align-items-center">
-          <a href="#" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-              <svg width="43" height="auto" viewBox="0 0 73 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div id="image-container" class="col-md-4 d-flex align-items-center">
+          <a class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+              <svg id="main-image" width="43" height="auto" viewBox="0 0 73 46" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M45.4591 16.6231L45.1943 16.3754V8.40576L57.5272 16.6231H45.4591Z" fill="white" stroke="white" stroke-width="9"/>
                   <path d="M45.4847 28.4003L57.8354 28.2694L45.1943 36.6563V28.6711L45.4847 28.4003Z" fill="#D2D2D2" stroke="#D2D2D2" stroke-width="9"/>
                   <path d="M17.3955 45.042V33.4332L0 0V12.5375L17.3955 45.042Z" fill="white"/>
@@ -141,7 +141,7 @@
           const mainImage = document.getElementById("main-image");
           let isStickerVisible = false;
       
-          imageContainer.addEventListener("click", function () {
+          imageContainer.addEventListener("click", function(){
             if (isStickerVisible) {
               mainImage.style.display = "block";
               isStickerVisible = false;
