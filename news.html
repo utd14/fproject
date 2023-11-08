@@ -34,7 +34,7 @@
           </ul>
     
         <div class="col-md-3 text-end">
-          <button type="button" class="btn me-2 text-white"><a href="profile.html" class="nav-link link-body-emphasis px-3 text-white">Login</a></button>
+          <button type="button" class="btn me-2 text-white"><a href="profile.html" class="nav-link link-body-emphasis px-0 text-white">Login</a></button>
           <button type="button" class="btn btn-light" style="margin-right: 20px;">Sign-up</button>
           <label class="switch" style="position:absolute;">
             <input type="checkbox" checked>
@@ -104,7 +104,8 @@
                 <h3><a href="#" class="nav-link link-body-emphasis px-1 text-black">Good Omens Season 2 is Here!</a></h3>
                 <img src="Images/goodomens.png" class="responsiveimg" width="700" height="400">
                 <form id="myForm">
-                  <label for="rank"><p><em>Rate it:</em> <input type="number" min="0" max="10" id="rank" name="rank" placeholder="? / 10" required><input type="submit" value="Submit" id="submitting">
+                  <br>
+                  <label for="rank"><p><em>Your rating:</em> <input type="number" min="0" max="10" id="rank" name="rank" placeholder="? / 10" required><input type="submit" value="Submit" id="submitting">
                   </p></label><br>
                 </form> 
                 <script>
@@ -134,6 +135,41 @@
           </a>
           <span class="mb-3 mb-md-0 text-white">© 2023 Dana Uteusheva, IT-2202</span>
         </div>
+
+        <script>
+          const imageContainer = document.getElementById("image-container");
+          const mainImage = document.getElementById("main-image");
+          let isStickerVisible = false;
+      
+          imageContainer.addEventListener("click", function () {
+            if (isStickerVisible) {
+              mainImage.style.display = "block";
+              isStickerVisible = false;
+            } else {
+              mainImage.style.display = "none";
+      
+              if (sticker) {
+                sticker.style.display = "block";
+              } else {
+                sticker = document.createElement("img");
+                sticker.id = "sticker"; 
+                sticker.src = "Images/sticker_1_png.png";
+                sticker.className = "sticker";
+                sticker.addEventListener("click", function (event) {
+                  event.stopPropagation();
+                  mainImage.style.display = "block";
+                  sticker.style.display = "none";
+                  isStickerVisible = false;
+                });
+                imageContainer.appendChild(sticker);
+              }
+      
+              isStickerVisible = true;
+            }
+          });
+      
+          let sticker = null;
+        </script>
     
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
           <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Contact me</a></li>
